@@ -99,13 +99,10 @@
 		955F378F28F5A43900A092F2 /* BrainQ */ = {
 			isa = PBXGroup;
 			children = (
-				955F379028F5A43900A092F2 /* AppDelegate.swift */,
-				955F379228F5A43900A092F2 /* SceneDelegate.swift */,
-				955F379428F5A43900A092F2 /* ViewController.swift */,
-				955F379C28F5A43A00A092F2 /* Assets.xcassets */,
-				955F379E28F5A43A00A092F2 /* LaunchScreen.storyboard */,
-				955F37A128F5A43A00A092F2 /* Info.plist */,
-				955F379928F5A43900A092F2 /* BrainQ.xcdatamodeld */,
+				956A0B2528F71B1800A72052 /* ModelView */,
+				956A0B2428F71B0E00A72052 /* View */,
+				956A0B2328F71B0400A72052 /* Model */,
+				956A0B2228F7195A00A72052 /* Application */,
 			);
 			path = BrainQ;
 			sourceTree = "<group>";
@@ -125,6 +122,41 @@
 				955F37B628F5A43A00A092F2 /* BrainQUITestsLaunchTests.swift */,
 			);
 			path = BrainQUITests;
+			sourceTree = "<group>";
+		};
+		956A0B2228F7195A00A72052 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				955F379028F5A43900A092F2 /* AppDelegate.swift */,
+				955F379228F5A43900A092F2 /* SceneDelegate.swift */,
+				955F379C28F5A43A00A092F2 /* Assets.xcassets */,
+				955F379928F5A43900A092F2 /* BrainQ.xcdatamodeld */,
+				955F37A128F5A43A00A092F2 /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		956A0B2328F71B0400A72052 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		956A0B2428F71B0E00A72052 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				955F379428F5A43900A092F2 /* ViewController.swift */,
+				955F379E28F5A43A00A092F2 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		956A0B2528F71B1800A72052 /* ModelView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ModelView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
