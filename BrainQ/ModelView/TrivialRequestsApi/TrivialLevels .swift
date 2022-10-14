@@ -7,5 +7,8 @@
 
 import Foundation
 
-enum TrivialLevels {
+enum TrivialLevels: String {
+    case easy
+    case medium
+    case hard
 }
