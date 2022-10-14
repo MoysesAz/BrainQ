@@ -7,5 +7,17 @@
 
 import Foundation
 
-class HttpsVerbs {
+class HttpsVerbs: AbstractHttpsVerbs {
+    func getRequest<T: Codable>(url: URL, objectResponse: T.Type, completion: @escaping (T) -> Void ) {
+        let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
+            guard let responseData = data else {return }
+            do {
+                let objectResponse = try JSONDecoder().decode(objectResponse, from: responseData)
+                completion(objectResponse)
+            } catch let error {
+                print(error)
+            }
+        }
+        task.resume()
+    }
 }
