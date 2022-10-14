@@ -16,6 +16,7 @@
 		955F37AB28F5A43A00A092F2 /* BrainQTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F37AA28F5A43A00A092F2 /* BrainQTests.swift */; };
 		955F37B528F5A43A00A092F2 /* BrainQUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F37B428F5A43A00A092F2 /* BrainQUITests.swift */; };
 		955F37B728F5A43A00A092F2 /* BrainQUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F37B628F5A43A00A092F2 /* BrainQUITestsLaunchTests.swift */; };
+		957EAAAF28F9D36800D8F2DE /* AbstractHttpsVerbs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EAAAE28F9D36800D8F2DE /* AbstractHttpsVerbs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		955F37B028F5A43A00A092F2 /* BrainQUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainQUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		955F37B428F5A43A00A092F2 /* BrainQUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainQUITests.swift; sourceTree = "<group>"; };
 		955F37B628F5A43A00A092F2 /* BrainQUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainQUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		957EAAAE28F9D36800D8F2DE /* AbstractHttpsVerbs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractHttpsVerbs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		955F378F28F5A43900A092F2 /* BrainQ */ = {
 			isa = PBXGroup;
 			children = (
+				955F37A128F5A43A00A092F2 /* Info.plist */,
 				956A0B2528F71B1800A72052 /* ModelView */,
 				956A0B2428F71B0E00A72052 /* View */,
 				956A0B2328F71B0400A72052 /* Model */,
@@ -127,11 +130,10 @@
 		956A0B2228F7195A00A72052 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				955F379928F5A43900A092F2 /* BrainQ.xcdatamodeld */,
+				955F379C28F5A43A00A092F2 /* Assets.xcassets */,
 				955F379028F5A43900A092F2 /* AppDelegate.swift */,
 				955F379228F5A43900A092F2 /* SceneDelegate.swift */,
-				955F379C28F5A43A00A092F2 /* Assets.xcassets */,
-				955F379928F5A43900A092F2 /* BrainQ.xcdatamodeld */,
-				955F37A128F5A43A00A092F2 /* Info.plist */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -155,6 +157,7 @@
 		956A0B2528F71B1800A72052 /* ModelView */ = {
 			isa = PBXGroup;
 			children = (
+				957EAAAE28F9D36800D8F2DE /* AbstractHttpsVerbs.swift */,
 			);
 			path = ModelView;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				955F379B28F5A43900A092F2 /* BrainQ.xcdatamodeld in Sources */,
+				957EAAAF28F9D36800D8F2DE /* AbstractHttpsVerbs.swift in Sources */,
 				955F379528F5A43900A092F2 /* ViewController.swift in Sources */,
 				955F379128F5A43900A092F2 /* AppDelegate.swift in Sources */,
 				955F379328F5A43900A092F2 /* SceneDelegate.swift in Sources */,
