@@ -17,7 +17,7 @@
 		955F37B528F5A43A00A092F2 /* BrainQUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F37B428F5A43A00A092F2 /* BrainQUITests.swift */; };
 		955F37B728F5A43A00A092F2 /* BrainQUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F37B628F5A43A00A092F2 /* BrainQUITestsLaunchTests.swift */; };
 		957EAAAF28F9D36800D8F2DE /* AbstractHttpsVerbs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EAAAE28F9D36800D8F2DE /* AbstractHttpsVerbs.swift */; };
-		957EAAB128F9D4A300D8F2DE /* HttpVerbs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EAAB028F9D4A300D8F2DE /* HttpVerbs.swift */; };
+		957EAAB128F9D4A300D8F2DE /* HttpRequestMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EAAB028F9D4A300D8F2DE /* HttpRequestMethods.swift */; };
 		957EAAB328F9D5DA00D8F2DE /* HttpVerbsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EAAB228F9D5DA00D8F2DE /* HttpVerbsError.swift */; };
 		957EAAB628F9D68C00D8F2DE /* TrivialRequestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EAAB528F9D68C00D8F2DE /* TrivialRequestApi.swift */; };
 		957EAAB928F9D6DB00D8F2DE /* TrivialLevels .swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EAAB828F9D6DB00D8F2DE /* TrivialLevels .swift */; };
@@ -57,7 +57,7 @@
 		955F37B428F5A43A00A092F2 /* BrainQUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainQUITests.swift; sourceTree = "<group>"; };
 		955F37B628F5A43A00A092F2 /* BrainQUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainQUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		957EAAAE28F9D36800D8F2DE /* AbstractHttpsVerbs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractHttpsVerbs.swift; sourceTree = "<group>"; };
-		957EAAB028F9D4A300D8F2DE /* HttpVerbs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpVerbs.swift; sourceTree = "<group>"; };
+		957EAAB028F9D4A300D8F2DE /* HttpRequestMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestMethods.swift; sourceTree = "<group>"; };
 		957EAAB228F9D5DA00D8F2DE /* HttpVerbsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpVerbsError.swift; sourceTree = "<group>"; };
 		957EAAB528F9D68C00D8F2DE /* TrivialRequestApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrivialRequestApi.swift; sourceTree = "<group>"; };
 		957EAAB828F9D6DB00D8F2DE /* TrivialLevels .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrivialLevels .swift"; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 			children = (
 				957EAAB428F9D62A00D8F2DE /* TrivialRequestsApi */,
 				957EAAAE28F9D36800D8F2DE /* AbstractHttpsVerbs.swift */,
-				957EAAB028F9D4A300D8F2DE /* HttpVerbs.swift */,
+				957EAAB028F9D4A300D8F2DE /* HttpRequestMethods.swift */,
 				957EAAB228F9D5DA00D8F2DE /* HttpVerbsError.swift */,
 			);
 			path = ModelView;
@@ -347,7 +347,7 @@
 				955F379528F5A43900A092F2 /* ViewController.swift in Sources */,
 				955F379128F5A43900A092F2 /* AppDelegate.swift in Sources */,
 				957EAABC28F9D73700D8F2DE /* TrivialThemes .swift in Sources */,
-				957EAAB128F9D4A300D8F2DE /* HttpVerbs.swift in Sources */,
+				957EAAB128F9D4A300D8F2DE /* HttpRequestMethods.swift in Sources */,
 				957EAAB328F9D5DA00D8F2DE /* HttpVerbsError.swift in Sources */,
 				955F379328F5A43900A092F2 /* SceneDelegate.swift in Sources */,
 			);

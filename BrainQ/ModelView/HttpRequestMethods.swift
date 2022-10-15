@@ -7,7 +7,7 @@
 
 import Foundation
 
-class HttpsVerbs: AbstractHttpsVerbs {
+class HttpRequestMethods: AbstractHttpsVerbs {
     private init() {}
     static func getRequest<T: Codable>(url: URL, objectResponse: T.Type, completion: @escaping (T) -> Void ) {
         let task = URLSession.shared.dataTask(with: url) { (data, _, error) in
