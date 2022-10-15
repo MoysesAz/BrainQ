@@ -7,5 +7,5 @@
 
 import Foundation
 
-enum HttpVerbsError: Error {
+enum HttpRequestMethodsError: Error {
 }
