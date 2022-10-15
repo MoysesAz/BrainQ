@@ -8,14 +8,12 @@
 import Foundation
 
 struct TrivialResponseApi: Codable {
-    var category: String
-    var type: String
-    var difficulty: String
-    var question: String
-    var correctAnswer: String
-    var incorrectAnswers: [String]
+    let category, type, difficulty, question: String
+    let correctAnswer: String
+    let incorrectAnswers: [String]
 
-    enum Codingkeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
+        case category, type, difficulty, question
         case correctAnswer = "correct_answer"
         case incorrectAnswers = "incorrect_answers"
     }
@@ -23,11 +21,12 @@ struct TrivialResponseApi: Codable {
 
 extension TrivialResponseApi {
     struct WithResponseCode: Codable {
-        var responseCode: Int
-        var results: [TrivialResponseApi]
+        let responseCode: Int
+        let results: [TrivialResponseApi]
 
-        enum Codingkeys: String, CodingKey {
+        enum CodingKeys: String, CodingKey {
             case responseCode = "response_code"
+            case results
         }
     }
 }
