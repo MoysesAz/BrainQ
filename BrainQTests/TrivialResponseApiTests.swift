@@ -6,30 +6,45 @@
 //
 
 import XCTest
+@testable import BrainQ
+final class TrivialResponseApiTests: XCTestCase {
+    let response = TrivialResponseApi(category: "Animals",
+                                      type: "multiple",
+                                      difficulty: "medium",
+                                      question: "test?",
+                                      correctAnswer: "Tasmania, Australia",
+                                      incorrectAnswers: ["Baluchistan, Pakistan",
+                                                         "Wallachia, Romania",
+                                                         "Oregon, United States"])
 
-final class TrivialResponseApi: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testTrivialResponseApi_canCreateInstance() {
+        XCTAssertNotNil(response, "O valor deveria ser diferente de nil")
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testTrivialResponseApi_ShouldPassIfValidateCategory() {
+        XCTAssertEqual(response.category, "Animals", "O valor deveria ser igual a Animals")
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testTrivialResponseApi_ShouldPassIfValidateType() {
+        XCTAssertEqual(response.type, "multiple", "O valor deveria ser igual a multiple")
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testTrivialResponseApi_ShouldPassIfValidateQuestion() {
+        XCTAssertEqual(response.question, "test?", "O valor deveria ser igual a test?")
     }
 
+    func testTrivialResponseApi_ShouldPassIfValidateCorrectAnswer() {
+        XCTAssertEqual(response.correctAnswer, "Tasmania, Australia", "O valor deveria ser igual a Tasmania, Australia")
+    }
+
+    func testTrivialResponseApi_ShouldPassIfValidateIncorrectAnswers() {
+        XCTAssertEqual(response.incorrectAnswers,
+                       ["Baluchistan, Pakistan",
+                        "Wallachia, Romania",
+                        "Oregon, United States"],
+                        """
+                        O valor deveria ser igual a\
+                        \(["Baluchistan, Pakistan", "Wallachia, Romania", "Oregon, United States"])
+                        """)
+    }
 }
