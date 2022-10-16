@@ -8,37 +8,29 @@
 import XCTest
 @testable import BrainQ
 final class TrivialResponseApiTests: XCTestCase {
-    let response = TrivialResponseApi(category: "Animals",
-                                      type: "multiple",
-                                      difficulty: "medium",
-                                      question: "test?",
-                                      correctAnswer: "Tasmania, Australia",
-                                      incorrectAnswers: ["Baluchistan, Pakistan",
-                                                         "Wallachia, Romania",
-                                                         "Oregon, United States"])
-
     func testTrivialResponseApi_canCreateInstance() {
-        XCTAssertNotNil(response, "O valor deveria ser diferente de nil")
+        XCTAssertNotNil(MockValues.question, "O valor deveria ser diferente de nil")
     }
 
     func testTrivialResponseApi_ShouldPassIfValidateCategory() {
-        XCTAssertEqual(response.category, "Animals", "O valor deveria ser igual a Animals")
+        XCTAssertEqual(MockValues.question.category, "Animals", "O valor deveria ser igual a Animals")
     }
 
     func testTrivialResponseApi_ShouldPassIfValidateType() {
-        XCTAssertEqual(response.type, "multiple", "O valor deveria ser igual a multiple")
+        XCTAssertEqual(MockValues.question.type, "multiple", "O valor deveria ser igual a multiple")
     }
 
     func testTrivialResponseApi_ShouldPassIfValidateQuestion() {
-        XCTAssertEqual(response.question, "test?", "O valor deveria ser igual a test?")
+        XCTAssertEqual(MockValues.question.question, "test?", "O valor deveria ser igual a test?")
     }
 
     func testTrivialResponseApi_ShouldPassIfValidateCorrectAnswer() {
-        XCTAssertEqual(response.correctAnswer, "Tasmania, Australia", "O valor deveria ser igual a Tasmania, Australia")
+        XCTAssertEqual(MockValues.question.correctAnswer, "Tasmania, Australia",
+                       "O valor deveria ser igual a Tasmania, Australia")
     }
 
     func testTrivialResponseApi_ShouldPassIfValidateIncorrectAnswers() {
-        XCTAssertEqual(response.incorrectAnswers,
+        XCTAssertEqual(MockValues.question.incorrectAnswers,
                        ["Baluchistan, Pakistan",
                         "Wallachia, Romania",
                         "Oregon, United States"],
