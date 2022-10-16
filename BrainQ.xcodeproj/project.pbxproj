@@ -25,6 +25,10 @@
 		957EAABE28F9D75B00D8F2DE /* TrivialResponseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EAABD28F9D75B00D8F2DE /* TrivialResponseApi.swift */; };
 		95E2C19128FB169600F7F8AC /* TrivialResponseApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E2C19028FB169600F7F8AC /* TrivialResponseApiTests.swift */; };
 		95E2C19328FB77D900F7F8AC /* TrivialLevelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E2C19228FB77D900F7F8AC /* TrivialLevelsTests.swift */; };
+		95E2C19528FB958F00F7F8AC /* TrivialRequestApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E2C19428FB958F00F7F8AC /* TrivialRequestApiTests.swift */; };
+		95E2C1A628FC377400F7F8AC /* Mocker in Frameworks */ = {isa = PBXBuildFile; productRef = 95E2C1A528FC377400F7F8AC /* Mocker */; };
+		95E2C1AA28FC3BB300F7F8AC /* HttpRequestMethodsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E2C1A928FC3BB300F7F8AC /* HttpRequestMethodsTests.swift */; };
+		95E2C1AD28FC402C00F7F8AC /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E2C1AB28FC3F8A00F7F8AC /* Mocks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +71,9 @@
 		957EAABD28F9D75B00D8F2DE /* TrivialResponseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrivialResponseApi.swift; sourceTree = "<group>"; };
 		95E2C19028FB169600F7F8AC /* TrivialResponseApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrivialResponseApiTests.swift; sourceTree = "<group>"; };
 		95E2C19228FB77D900F7F8AC /* TrivialLevelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrivialLevelsTests.swift; sourceTree = "<group>"; };
+		95E2C19428FB958F00F7F8AC /* TrivialRequestApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrivialRequestApiTests.swift; sourceTree = "<group>"; };
+		95E2C1A928FC3BB300F7F8AC /* HttpRequestMethodsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestMethodsTests.swift; sourceTree = "<group>"; };
+		95E2C1AB28FC3F8A00F7F8AC /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95E2C1A628FC377400F7F8AC /* Mocker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +109,7 @@
 				955F37A928F5A43A00A092F2 /* BrainQTests */,
 				955F37B328F5A43A00A092F2 /* BrainQUITests */,
 				955F378E28F5A43900A092F2 /* Products */,
+				95E2C1A428FC377400F7F8AC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +131,7 @@
 				956A0B2428F71B0E00A72052 /* View */,
 				956A0B2328F71B0400A72052 /* Model */,
 				956A0B2228F7195A00A72052 /* Application */,
+				95E2C19728FC2A2B00F7F8AC /* Mock */,
 			);
 			path = BrainQ;
 			sourceTree = "<group>";
@@ -130,8 +140,10 @@
 			isa = PBXGroup;
 			children = (
 				955F37AA28F5A43A00A092F2 /* BrainQTests.swift */,
+				95E2C1A928FC3BB300F7F8AC /* HttpRequestMethodsTests.swift */,
 				95E2C19028FB169600F7F8AC /* TrivialResponseApiTests.swift */,
 				95E2C19228FB77D900F7F8AC /* TrivialLevelsTests.swift */,
+				95E2C19428FB958F00F7F8AC /* TrivialRequestApiTests.swift */,
 			);
 			path = BrainQTests;
 			sourceTree = "<group>";
@@ -194,6 +206,21 @@
 			path = TrivialRequestsApi;
 			sourceTree = "<group>";
 		};
+		95E2C19728FC2A2B00F7F8AC /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				95E2C1AB28FC3F8A00F7F8AC /* Mocks.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		95E2C1A428FC377400F7F8AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -211,6 +238,9 @@
 			dependencies = (
 			);
 			name = BrainQ;
+			packageProductDependencies = (
+				95E2C1A528FC377400F7F8AC /* Mocker */,
+			);
 			productName = BrainQ;
 			productReference = 955F378D28F5A43900A092F2 /* BrainQ.app */;
 			productType = "com.apple.product-type.application";
@@ -229,6 +259,8 @@
 				955F37A828F5A43A00A092F2 /* PBXTargetDependency */,
 			);
 			name = BrainQTests;
+			packageProductDependencies = (
+			);
 			productName = BrainQTests;
 			productReference = 955F37A628F5A43A00A092F2 /* BrainQTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -283,6 +315,9 @@
 				Base,
 			);
 			mainGroup = 955F378428F5A43900A092F2;
+			packageReferences = (
+				95E2C1A128FC353700F7F8AC /* XCRemoteSwiftPackageReference "Mocker" */,
+			);
 			productRefGroup = 955F378E28F5A43900A092F2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -356,6 +391,7 @@
 				957EAAB128F9D4A300D8F2DE /* HttpRequestMethods.swift in Sources */,
 				957EAAB328F9D5DA00D8F2DE /* HttpRequestMethodsError.swift in Sources */,
 				955F379328F5A43900A092F2 /* SceneDelegate.swift in Sources */,
+				95E2C1AD28FC402C00F7F8AC /* Mocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,9 +399,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95E2C19528FB958F00F7F8AC /* TrivialRequestApiTests.swift in Sources */,
 				955F37AB28F5A43A00A092F2 /* BrainQTests.swift in Sources */,
 				95E2C19328FB77D900F7F8AC /* TrivialLevelsTests.swift in Sources */,
 				95E2C19128FB169600F7F8AC /* TrivialResponseApiTests.swift in Sources */,
+				95E2C1AA28FC3BB300F7F8AC /* HttpRequestMethodsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +565,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 35GM6XG62S;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrainQ/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -540,9 +579,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Academy.BrainQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -554,6 +596,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 35GM6XG62S;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrainQ/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -567,9 +610,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Academy.BrainQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -586,9 +632,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Academy.BrainQTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BrainQ.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BrainQ";
 			};
 			name = Debug;
@@ -606,9 +655,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Academy.BrainQTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BrainQ.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BrainQ";
 			};
 			name = Release;
@@ -689,6 +741,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		95E2C1A128FC353700F7F8AC /* XCRemoteSwiftPackageReference "Mocker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WeTransfer/Mocker";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		95E2C1A528FC377400F7F8AC /* Mocker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 95E2C1A128FC353700F7F8AC /* XCRemoteSwiftPackageReference "Mocker" */;
+			productName = Mocker;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		955F379928F5A43900A092F2 /* BrainQ.xcdatamodeld */ = {
