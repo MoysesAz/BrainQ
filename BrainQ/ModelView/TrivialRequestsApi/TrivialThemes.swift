@@ -17,7 +17,7 @@ enum TrivialThemes: String, CaseIterable {
     case history
     case animals
     case comics
-    case animeAndManga
+    case anime
 
     func returnNumber() -> Int {
         switch self {
@@ -39,7 +39,7 @@ enum TrivialThemes: String, CaseIterable {
             return 27
         case .comics:
             return 29
-        case .animeAndManga:
+        case .anime:
             return 31
         }
     }
