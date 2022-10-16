@@ -23,12 +23,6 @@ extension TrivialResponseApi {
     struct WithResponseCode: Codable {
         let responseCode: Int
         let results: [TrivialResponseApi]
-
-        enum CodingKeys: String, CodingKey {
-            case responseCode = "response_code"
-            case results
-        }
-
     }
 }
 
@@ -49,5 +43,12 @@ extension TrivialResponseApi.WithResponseCode: Equatable {
         return
             lhs.responseCode == rhs.responseCode &&
             lhs.results == rhs.results
+    }
+}
+
+extension TrivialResponseApi.WithResponseCode {
+    enum CodingKeys: String, CodingKey {
+        case responseCode = "response_code"
+        case results
     }
 }
