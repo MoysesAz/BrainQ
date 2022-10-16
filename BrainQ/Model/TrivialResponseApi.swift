@@ -28,5 +28,26 @@ extension TrivialResponseApi {
             case responseCode = "response_code"
             case results
         }
+
+    }
+}
+
+extension TrivialResponseApi: Equatable {
+    static func == (lhs: TrivialResponseApi, rhs: TrivialResponseApi) -> Bool {
+        return
+            lhs.category == rhs.category &&
+            lhs.type == rhs.type &&
+            lhs.difficulty == rhs.difficulty &&
+            lhs.question == rhs.question &&
+            lhs.correctAnswer == rhs.correctAnswer &&
+            lhs.correctAnswer == rhs.correctAnswer
+    }
+}
+
+extension TrivialResponseApi.WithResponseCode: Equatable {
+    static func == (lhs: TrivialResponseApi.WithResponseCode, rhs: TrivialResponseApi.WithResponseCode) -> Bool {
+        return
+            lhs.responseCode == rhs.responseCode &&
+            lhs.results == rhs.results
     }
 }
