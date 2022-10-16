@@ -39,4 +39,13 @@ final class TrivialResponseApiTests: XCTestCase {
                         \(["Baluchistan, Pakistan", "Wallachia, Romania", "Oregon, United States"])
                         """)
     }
+
+    func testTrivialResponseApiWithResponseCode_ShouldEquatable() {
+        XCTAssertEqual(MockValues.responseApi, MockValues.responseApi)
+    }
+
+    func testTrivialResponseApi_ShouldEquatable() {
+        XCTAssertEqual(MockValues.question, MockValues.question)
+    }
+
 }
