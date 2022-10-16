@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TrivialLevels: String {
+enum TrivialLevels: String, CaseIterable {
     case easy
     case medium
     case hard

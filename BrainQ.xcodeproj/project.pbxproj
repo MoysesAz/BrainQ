@@ -20,10 +20,11 @@
 		957EAAB128F9D4A300D8F2DE /* HttpRequestMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EAAB028F9D4A300D8F2DE /* HttpRequestMethods.swift */; };
 		957EAAB328F9D5DA00D8F2DE /* HttpRequestMethodsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EAAB228F9D5DA00D8F2DE /* HttpRequestMethodsError.swift */; };
 		957EAAB628F9D68C00D8F2DE /* TrivialRequestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EAAB528F9D68C00D8F2DE /* TrivialRequestApi.swift */; };
-		957EAAB928F9D6DB00D8F2DE /* TrivialLevels .swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EAAB828F9D6DB00D8F2DE /* TrivialLevels .swift */; };
-		957EAABC28F9D73700D8F2DE /* TrivialThemes .swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EAABB28F9D73700D8F2DE /* TrivialThemes .swift */; };
+		957EAAB928F9D6DB00D8F2DE /* TrivialLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EAAB828F9D6DB00D8F2DE /* TrivialLevels.swift */; };
+		957EAABC28F9D73700D8F2DE /* TrivialThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EAABB28F9D73700D8F2DE /* TrivialThemes.swift */; };
 		957EAABE28F9D75B00D8F2DE /* TrivialResponseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EAABD28F9D75B00D8F2DE /* TrivialResponseApi.swift */; };
 		95E2C19128FB169600F7F8AC /* TrivialResponseApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E2C19028FB169600F7F8AC /* TrivialResponseApiTests.swift */; };
+		95E2C19328FB77D900F7F8AC /* TrivialLevelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E2C19228FB77D900F7F8AC /* TrivialLevelsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,10 +62,11 @@
 		957EAAB028F9D4A300D8F2DE /* HttpRequestMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestMethods.swift; sourceTree = "<group>"; };
 		957EAAB228F9D5DA00D8F2DE /* HttpRequestMethodsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestMethodsError.swift; sourceTree = "<group>"; };
 		957EAAB528F9D68C00D8F2DE /* TrivialRequestApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrivialRequestApi.swift; sourceTree = "<group>"; };
-		957EAAB828F9D6DB00D8F2DE /* TrivialLevels .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrivialLevels .swift"; sourceTree = "<group>"; };
-		957EAABB28F9D73700D8F2DE /* TrivialThemes .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrivialThemes .swift"; sourceTree = "<group>"; };
+		957EAAB828F9D6DB00D8F2DE /* TrivialLevels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrivialLevels.swift; sourceTree = "<group>"; };
+		957EAABB28F9D73700D8F2DE /* TrivialThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrivialThemes.swift; sourceTree = "<group>"; };
 		957EAABD28F9D75B00D8F2DE /* TrivialResponseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrivialResponseApi.swift; sourceTree = "<group>"; };
 		95E2C19028FB169600F7F8AC /* TrivialResponseApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrivialResponseApiTests.swift; sourceTree = "<group>"; };
+		95E2C19228FB77D900F7F8AC /* TrivialLevelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrivialLevelsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			children = (
 				955F37AA28F5A43A00A092F2 /* BrainQTests.swift */,
 				95E2C19028FB169600F7F8AC /* TrivialResponseApiTests.swift */,
+				95E2C19228FB77D900F7F8AC /* TrivialLevelsTests.swift */,
 			);
 			path = BrainQTests;
 			sourceTree = "<group>";
@@ -185,8 +188,8 @@
 			isa = PBXGroup;
 			children = (
 				957EAAB528F9D68C00D8F2DE /* TrivialRequestApi.swift */,
-				957EAAB828F9D6DB00D8F2DE /* TrivialLevels .swift */,
-				957EAABB28F9D73700D8F2DE /* TrivialThemes .swift */,
+				957EAAB828F9D6DB00D8F2DE /* TrivialLevels.swift */,
+				957EAABB28F9D73700D8F2DE /* TrivialThemes.swift */,
 			);
 			path = TrivialRequestsApi;
 			sourceTree = "<group>";
@@ -344,12 +347,12 @@
 			files = (
 				957EAAB628F9D68C00D8F2DE /* TrivialRequestApi.swift in Sources */,
 				955F379B28F5A43900A092F2 /* BrainQ.xcdatamodeld in Sources */,
-				957EAAB928F9D6DB00D8F2DE /* TrivialLevels .swift in Sources */,
+				957EAAB928F9D6DB00D8F2DE /* TrivialLevels.swift in Sources */,
 				957EAAAF28F9D36800D8F2DE /* AbstractHttpRequestMethods.swift in Sources */,
 				957EAABE28F9D75B00D8F2DE /* TrivialResponseApi.swift in Sources */,
 				955F379528F5A43900A092F2 /* ViewController.swift in Sources */,
 				955F379128F5A43900A092F2 /* AppDelegate.swift in Sources */,
-				957EAABC28F9D73700D8F2DE /* TrivialThemes .swift in Sources */,
+				957EAABC28F9D73700D8F2DE /* TrivialThemes.swift in Sources */,
 				957EAAB128F9D4A300D8F2DE /* HttpRequestMethods.swift in Sources */,
 				957EAAB328F9D5DA00D8F2DE /* HttpRequestMethodsError.swift in Sources */,
 				955F379328F5A43900A092F2 /* SceneDelegate.swift in Sources */,
@@ -361,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				955F37AB28F5A43A00A092F2 /* BrainQTests.swift in Sources */,
+				95E2C19328FB77D900F7F8AC /* TrivialLevelsTests.swift in Sources */,
 				95E2C19128FB169600F7F8AC /* TrivialResponseApiTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

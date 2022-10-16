@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TrivialThemes: String {
+enum TrivialThemes: String, CaseIterable {
     case film
     case music
     case nature
