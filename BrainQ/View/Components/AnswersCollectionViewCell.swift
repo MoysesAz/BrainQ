@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AnswersViewCell: UICollectionViewCell {
+class AnswersCollectionViewCell: UICollectionViewCell {
     static let reuseIndentifier = "AnswersViewCell"
 
     lazy var answer: UILabel = {
@@ -25,7 +25,6 @@ class AnswersViewCell: UICollectionViewCell {
             answer.text = text
         }
     }
-
 
     override init(frame: CGRect) {
         super.init(frame: frame)
