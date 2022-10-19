@@ -8,19 +8,40 @@
 import UIKit
 
 class SelectorQuestionsViewController: UIViewController {
+    let viewModel: SelectorQuestionsViewModel
+    var contentView: SelectorQuestionsView
+
+    init(contentView: SelectorQuestionsView = SelectorQuestionsView(),
+         viewModel: SelectorQuestionsViewModel) {
+        self.contentView = contentView
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     var teste = ["Sport", "computer", "Nature"]
     var teste2 = ["Easy", "medium", "hard"]
-    var selector = SelectorQuestionsView()
 
     override func loadView() {
-        self.view = selector
+        self.view = contentView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        selector.selectorPicker.dataSource = self
-        selector.selectorPicker.delegate = self
+        contentView.selectorPicker.dataSource = self
+        contentView.selectorPicker.delegate = self
+        contentView.delegate = self
+
     }
 
+}
+
+extension SelectorQuestionsViewController: SelectorQuestionsDelegate {
+    func getController() {
+        self.navigationController?.pushViewController(GameQuestionViewController(viewModel: GameQuestionViewModel(theme: .anime, level: .easy)), animated: true)
+    }
 }
 
 extension SelectorQuestionsViewController: UIPickerViewDelegate {

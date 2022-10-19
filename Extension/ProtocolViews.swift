@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol Views {
+    init(frame: CGRect)
+    func addSubViews()
+
+}
