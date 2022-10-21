@@ -8,6 +8,6 @@
 import Foundation
 
 protocol AbstractHttpRequestMethods {
-    func getRequest<T: Codable>(url: URL, objectResponse: T.Type, completion: @escaping (T
+    func getRequest<T: Codable>(url: URL, objectResponse: T.Type, completion: @escaping (Result<T, Error>
     ) -> Void)
 }

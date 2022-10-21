@@ -10,14 +10,13 @@ import UIKit
 class GameQuestionViewController: UIViewController {
     let respostas = ["Macaco", "Boi", "Peixe", "Dino"]
 
-    let viewModel: GameQuestionViewModel
+    var viewModel: GameQuestionViewModel
     var contentView: GameQuestionView
 
     init(contentView: GameQuestionView = GameQuestionView(),
          viewModel: GameQuestionViewModel) {
         self.contentView = contentView
         self.viewModel = viewModel
-
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -31,8 +30,27 @@ class GameQuestionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.getQuestions()
+        contentView.delegate = self
+        viewModel.delegate = self
         contentView.answersCollectionView.dataSource = self
         contentView.answersCollectionView.delegate = self
+        self.viewModel.model.bind {[weak self] value in
+            DispatchQueue.main.async {
+                if value != nil {
+                    self?.contentView.configview()
+                    self?.viewModel.tratarQuestions()
+
+                }
+            }
+        }
+    }
+    //TODO: chama tua api
+}
+
+extension GameQuestionViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
     }
 }
 
@@ -72,6 +90,20 @@ extension GameQuestionViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-         return UIEdgeInsets(top: 1, left: 20, bottom: 1, right: 20)
+        return UIEdgeInsets(top: 1, left: 20, bottom: 1, right: 20)
+    }
+}
+
+extension GameQuestionViewController: GameQuestionViewModelDelegate {
+    func fatchQuestion() {
+    }
+}
+
+extension GameQuestionViewController: GameViewQuestionDelegate {
+    func reloadData() {
+        contentView.configview()
+        contentView.categoryLabel.text = ""
+        contentView.questionLabel.text = ""
+        contentView.imageCategory.image = UIImage(named: "ErrorImage")
     }
 }

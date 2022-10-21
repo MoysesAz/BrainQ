@@ -8,7 +8,7 @@
 import UIKit
 
 class AnswersCollectionViewCell: UICollectionViewCell {
-    static let reuseIndentifier = "AnswersViewCell"
+    static let indentifier = "AnswersViewCell"
 
     lazy var answer: UILabel = {
         let answer = UILabel()

@@ -22,9 +22,6 @@ class SelectorQuestionsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    var teste = ["Sport", "computer", "Nature"]
-    var teste2 = ["Easy", "medium", "hard"]
-
     override func loadView() {
         self.view = contentView
     }
@@ -33,15 +30,26 @@ class SelectorQuestionsViewController: UIViewController {
         contentView.selectorPicker.dataSource = self
         contentView.selectorPicker.delegate = self
         contentView.delegate = self
-
+        viewModel.delegate = self
     }
-
 }
 
 extension SelectorQuestionsViewController: SelectorQuestionsDelegate {
-    func getController() {
-        self.navigationController?.pushViewController(GameQuestionViewController(viewModel: GameQuestionViewModel(theme: .anime, level: .easy)), animated: true)
+    func changeTheme(themeString: String) {
+        contentView.imageCategory.image = UIImage(named: themeString)
+        contentView.categoryLabel.text = themeString
     }
+
+    func start() {
+        let theme = viewModel.theme
+        let level = viewModel.level
+        let gameQuestionViewModel = GameQuestionViewModel(theme: theme, level: level)
+        let controller = GameQuestionViewController(viewModel: gameQuestionViewModel)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+extension SelectorQuestionsViewController: SelectorQuestionsViewModelDelegate {
 }
 
 extension SelectorQuestionsViewController: UIPickerViewDelegate {
@@ -56,9 +64,9 @@ extension SelectorQuestionsViewController: UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch component {
         case 0:
-            return teste.count
+            return viewModel.themes.count
         case 1:
-            return teste2.count
+            return viewModel.levels.count
         default:
             return 0
         }
@@ -67,14 +75,27 @@ extension SelectorQuestionsViewController: UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch component {
         case 0:
-            let row = teste[row]
-            return row
+            let row = viewModel.themes[row]
+            return row.rawValue
         case 1:
-            let row = teste2[row]
-            return row
+            let row = viewModel.levels[row]
+            return row.rawValue
         default:
             return nil
         }
     }
 
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch component {
+        case 0:
+            let theme = viewModel.themes[row]
+            changeTheme(themeString: theme.rawValue)
+            viewModel.theme = theme
+        case 1:
+            let level = viewModel.levels[row]
+            viewModel.level = level
+        default:
+            print("error")
+        }
+    }
 }

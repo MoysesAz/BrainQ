@@ -35,6 +35,8 @@ class ScoreboardViewController: UIViewController {
 
 extension ScoreboardViewController: ScoreboardDelegate {
     func play() {
-        self.navigationController?.pushViewController(SelectorQuestionsViewController(viewModel: SelectorQuestionsViewModel()), animated: true)
+        var viewModel = SelectorQuestionsViewModel()
+        var controller = SelectorQuestionsViewController(viewModel: viewModel)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }

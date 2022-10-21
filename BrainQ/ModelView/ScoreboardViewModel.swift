@@ -8,8 +8,4 @@
 import Foundation
 
 class ScoreboardViewModel {
-
-    func nevegacao() {
-        print("navegou")
-    }
 }

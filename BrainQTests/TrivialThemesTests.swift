@@ -29,7 +29,8 @@ final class TrivialThemesTests: XCTestCase {
         for element in TrivialThemes.allCases {
             listCategoryCode.append(element.returnNumber())
         }
-        XCTAssertEqual(listCategoryCode, MockValues.listCategoryCode, "Os valores deveriam ser: \(MockValues.listCategoryCode)")
+        XCTAssertEqual(listCategoryCode, MockValues.listCategoryCode,
+                       "Os valores deveriam ser: \(MockValues.listCategoryCode)")
     }
 
 }

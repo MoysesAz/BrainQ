@@ -7,36 +7,47 @@
 
 import UIKit
 
+protocol GameViewQuestionDelegate {
+    func reloadData()
+}
+
 class GameQuestionView: UIView {
-    lazy var questionCategory: UILabel = {
+    var delegate: GameViewQuestionDelegate?
+
+    lazy var categoryLabel: UILabel = {
         let categoryQuestion = UILabel()
         categoryQuestion.translatesAutoresizingMaskIntoConstraints = false
-        categoryQuestion.text = "Sport"
+        categoryQuestion.text = ""
         categoryQuestion.font = .systemFont(ofSize: 21)
-
         return categoryQuestion
     }()
 
-    lazy var question: UILabel = {
+    lazy var questionLabel: UILabel = {
         let question = UILabel()
         question.translatesAutoresizingMaskIntoConstraints = false
-        question.text = "O;oihjadsf;lhasd?"
         question.font = .systemFont(ofSize: 30, weight: .bold)
         return question
     }()
 
     lazy var imageCategory: UIImageView = {
         let imageCategory = UIImageView()
-        imageCategory.image = UIImage(named: "ErrorImage")
+        imageCategory.contentMode = .scaleToFill
         imageCategory.translatesAutoresizingMaskIntoConstraints = false
         return imageCategory
     }()
 
-    lazy var answers: UICollectionView = {
-        let answers = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        answers.register(AnswersViewCell.self, forCellWithReuseIdentifier: "AnswersViewCell")
-        answers.translatesAutoresizingMaskIntoConstraints = false
-        return answers
+    lazy var answersCollectionView: UICollectionView = {
+        let answersCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        answersCollectionView.register(AnswersCollectionViewCell.self, forCellWithReuseIdentifier: "AnswersViewCell")
+        answersCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        return answersCollectionView
+    }()
+
+    lazy var indicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.startAnimating()
+        return indicator
     }()
 
     override init(frame: CGRect) {
@@ -44,6 +55,7 @@ class GameQuestionView: UIView {
         self.backgroundColor = .white
         self.addSubViews()
         self.setConstraints()
+        self.loadingView()
     }
 
     required init?(coder: NSCoder) {
@@ -51,10 +63,30 @@ class GameQuestionView: UIView {
     }
 
     private func addSubViews() {
-        self.addSubview(questionCategory)
-        self.addSubview(question)
+        self.addSubview(categoryLabel)
+        self.addSubview(questionLabel)
         self.addSubview(imageCategory)
-        self.addSubview(answers)
+        self.addSubview(answersCollectionView)
+        self.addSubview(indicator)
+    }
+}
+
+extension GameQuestionView {
+    func configview() {
+        self.isHidden = false
+        categoryLabel.isHidden = false
+        questionLabel.isHidden = false
+        imageCategory.isHidden = false
+        answersCollectionView.isHidden = false
+        indicator.isHidden = true
+    }
+
+    func loadingView() {
+        categoryLabel.isHidden = true
+        questionLabel.isHidden = true
+        imageCategory.isHidden = true
+        answersCollectionView.isHidden = true
+        indicator.isHidden = false
     }
 }
 
@@ -64,36 +96,45 @@ extension GameQuestionView {
         questionConstraints()
         imageCategoryConstraints()
         answersConstraints()
+        indicatorConstraints()
     }
 
     private func questionCategoryConstraints() {
         NSLayoutConstraint.activate([
-            questionCategory.topAnchor.constraint(equalTo: self.topAnchor, constant: self.frame.height * 0.2),
-            questionCategory.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: self.frame.width * 0.05)
-            ])
+            categoryLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
+            categoryLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: self.frame.width * 0.05)
+        ])
     }
 
     private func questionConstraints() {
         NSLayoutConstraint.activate([
-            question.topAnchor.constraint(equalTo: self.questionCategory.bottomAnchor, constant: 20),
-            question.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: self.frame.width * 0.05)
-            ])
+            questionLabel.topAnchor.constraint(equalTo: self.categoryLabel.bottomAnchor, constant: 10),
+            questionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: self.frame.width * 0.05)
+        ])
     }
 
     private func imageCategoryConstraints() {
         NSLayoutConstraint.activate([
-            imageCategory.topAnchor.constraint(equalTo: self.question.bottomAnchor, constant: 10),
+            imageCategory.topAnchor.constraint(equalTo: self.questionLabel.bottomAnchor, constant: 10),
             imageCategory.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.30),
             imageCategory.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
             imageCategory.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: self.frame.width * 0.05)
-            ])
+        ])
     }
 
     private func answersConstraints() {
         NSLayoutConstraint.activate([
-            answers.topAnchor.constraint(equalTo: self.imageCategory.bottomAnchor, constant: 20),
-            answers.widthAnchor.constraint(equalTo: self.widthAnchor),
-            answers.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            answersCollectionView.topAnchor.constraint(equalTo: self.imageCategory.bottomAnchor, constant: 20),
+            answersCollectionView.widthAnchor.constraint(equalTo: self.widthAnchor),
+            answersCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
+
+    private func indicatorConstraints() {
+        NSLayoutConstraint.activate([
+            indicator.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            indicator.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+        ])
+    }
+
 }
