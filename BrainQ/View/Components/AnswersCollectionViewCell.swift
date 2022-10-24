@@ -13,7 +13,9 @@ class AnswersCollectionViewCell: UICollectionViewCell {
     lazy var answer: UILabel = {
         let answer = UILabel()
         answer.translatesAutoresizingMaskIntoConstraints = false
-        answer.textAlignment = .center
+        answer.font = .systemFont(ofSize: 16, weight: .regular)
+        answer.numberOfLines = 0
+        answer.center = center
         return answer
     }()
 
@@ -28,8 +30,9 @@ class AnswersCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .gray
+        backgroundColor = .white
         addSubViews()
+        setConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -41,6 +44,21 @@ class AnswersCollectionViewCell: UICollectionViewCell {
     }
 
     override func layoutSubviews() {
-        answer.frame = contentView.bounds
+        answer.frame = contentView.frame
+    }
+}
+
+extension AnswersCollectionViewCell {
+    func setConstraints() {
+        answerConstraints()
+
+    }
+
+    func answerConstraints() {
+        NSLayoutConstraint.activate([
+            answer.centerXAnchor.constraint(equalTo: centerXAnchor),
+            answer.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
+
     }
 }

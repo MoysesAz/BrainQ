@@ -23,6 +23,11 @@ extension UIView {
     }
 }
 
+extension StringProtocol {
+    var firstUppercased: String { return prefix(1).uppercased() + dropFirst() }
+    var firstCapitalized: String { return prefix(1).capitalized + dropFirst() }
+}
+
 extension CACornerMask {
     static public let topRight: CACornerMask = .layerMaxXMinYCorner
     static public let topLeft: CACornerMask = .layerMinXMinYCorner

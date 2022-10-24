@@ -29,14 +29,14 @@ class ScoreboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         contentView.delegate = self
-
     }
 }
 
 extension ScoreboardViewController: ScoreboardDelegate {
     func play() {
         var viewModel = SelectorQuestionsViewModel()
-        var controller = SelectorQuestionsViewController(viewModel: viewModel)
+        var view = SelectorQuestionsView(frame: view.frame)
+        var controller = SelectorQuestionsViewController(contentView: view, viewModel: viewModel)
         self.navigationController?.pushViewController(controller, animated: true)
     }
 }

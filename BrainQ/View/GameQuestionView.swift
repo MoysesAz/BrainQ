@@ -8,24 +8,17 @@
 import UIKit
 
 protocol GameViewQuestionDelegate {
-    func reloadData()
+    func configView()
 }
 
 class GameQuestionView: UIView {
     var delegate: GameViewQuestionDelegate?
 
-    lazy var categoryLabel: UILabel = {
-        let categoryQuestion = UILabel()
-        categoryQuestion.translatesAutoresizingMaskIntoConstraints = false
-        categoryQuestion.text = ""
-        categoryQuestion.font = .systemFont(ofSize: 21)
-        return categoryQuestion
-    }()
-
     lazy var questionLabel: UILabel = {
         let question = UILabel()
         question.translatesAutoresizingMaskIntoConstraints = false
-        question.font = .systemFont(ofSize: 30, weight: .bold)
+        question.numberOfLines = 0
+        question.font = .systemFont(ofSize: 21, weight: .black)
         return question
     }()
 
@@ -63,18 +56,15 @@ class GameQuestionView: UIView {
     }
 
     private func addSubViews() {
-        self.addSubview(categoryLabel)
-        self.addSubview(questionLabel)
-        self.addSubview(imageCategory)
-        self.addSubview(answersCollectionView)
-        self.addSubview(indicator)
+        addSubview(questionLabel)
+        addSubview(imageCategory)
+        addSubview(answersCollectionView)
+        addSubview(indicator)
     }
 }
 
 extension GameQuestionView {
     func configview() {
-        self.isHidden = false
-        categoryLabel.isHidden = false
         questionLabel.isHidden = false
         imageCategory.isHidden = false
         answersCollectionView.isHidden = false
@@ -82,7 +72,6 @@ extension GameQuestionView {
     }
 
     func loadingView() {
-        categoryLabel.isHidden = true
         questionLabel.isHidden = true
         imageCategory.isHidden = true
         answersCollectionView.isHidden = true
@@ -92,41 +81,40 @@ extension GameQuestionView {
 
 extension GameQuestionView {
     func setConstraints() {
-        questionCategoryConstraints()
         questionConstraints()
         imageCategoryConstraints()
         answersConstraints()
         indicatorConstraints()
     }
 
-    private func questionCategoryConstraints() {
-        NSLayoutConstraint.activate([
-            categoryLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
-            categoryLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: self.frame.width * 0.05)
-        ])
-    }
-
     private func questionConstraints() {
         NSLayoutConstraint.activate([
-            questionLabel.topAnchor.constraint(equalTo: self.categoryLabel.bottomAnchor, constant: 10),
-            questionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: self.frame.width * 0.05)
+            questionLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            questionLabel.leadingAnchor.constraint(equalTo: leadingAnchor,
+                                                   constant: frame.width * 0.05),
+            questionLabel.trailingAnchor.constraint(equalTo: trailingAnchor,
+                                                    constant: frame.width * -0.05)
         ])
     }
 
     private func imageCategoryConstraints() {
         NSLayoutConstraint.activate([
-            imageCategory.topAnchor.constraint(equalTo: self.questionLabel.bottomAnchor, constant: 10),
-            imageCategory.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.30),
-            imageCategory.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
-            imageCategory.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: self.frame.width * 0.05)
+            imageCategory.bottomAnchor.constraint(equalTo: answersCollectionView.topAnchor,
+                                                  constant: frame.height * -0.05),
+            imageCategory.heightAnchor.constraint(equalTo: heightAnchor,
+                                                  multiplier: 0.38),
+            imageCategory.widthAnchor.constraint(equalTo: widthAnchor,
+                                                 multiplier: 0.8),
+            imageCategory.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
 
     private func answersConstraints() {
         NSLayoutConstraint.activate([
-            answersCollectionView.topAnchor.constraint(equalTo: self.imageCategory.bottomAnchor, constant: 20),
-            answersCollectionView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            answersCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            answersCollectionView.heightAnchor.constraint(equalTo: heightAnchor,
+                                                          multiplier: 0.25),
+            answersCollectionView.widthAnchor.constraint(equalTo: widthAnchor),
+            answersCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 

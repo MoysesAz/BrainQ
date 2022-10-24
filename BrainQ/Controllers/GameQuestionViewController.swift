@@ -8,8 +8,6 @@
 import UIKit
 
 class GameQuestionViewController: UIViewController {
-    let respostas = ["Macaco", "Boi", "Peixe", "Dino"]
-
     var viewModel: GameQuestionViewModel
     var contentView: GameQuestionView
 
@@ -30,33 +28,52 @@ class GameQuestionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.getQuestions()
+        self.navigationItem.title = viewModel.theme.rawValue.firstUppercased
+        viewModel.loadDataFromApi()
         contentView.delegate = self
         viewModel.delegate = self
-        contentView.answersCollectionView.dataSource = self
-        contentView.answersCollectionView.delegate = self
-        self.viewModel.model.bind {[weak self] value in
+        self.viewModel.response.bind {[weak self] value in
             DispatchQueue.main.async {
                 if value != nil {
                     self?.contentView.configview()
-                    self?.viewModel.tratarQuestions()
-
+                    self?.viewModel.preProcessingResponseForCache()
+                    self?.configView()
+                    self?.contentView.answersCollectionView.dataSource = self
+                    self?.contentView.answersCollectionView.delegate = self
                 }
             }
         }
     }
-    //TODO: chama tua api
 }
 
 extension GameQuestionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
+        let choices = viewModel.choices[viewModel.questionPointer]
+        let answer = choices[indexPath.row]
+        let check = viewModel.answerCheck(answer: answer)
+        if check {
+
+            viewModel.goal()
+            print("pontuou")
+        }
+        print(answer)
+
+        viewModel.nextQuestion()
+        print(viewModel.questions.count, viewModel.pontuation)
+        if viewModel.questionPointer == viewModel.questions.count - 1 {
+            print("salvar no banco de dados")
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            contentView.answersCollectionView.reloadData()
+            configView()
+        }
     }
 }
 
 extension GameQuestionViewController: UICollectionViewDataSource {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return respostas.count
+        return 4
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -65,8 +82,10 @@ extension GameQuestionViewController: UICollectionViewDataSource {
                                                             for: indexPath) as? AnswersCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.text = respostas[indexPath.row]
-        cell.roundCorners(cornerRadius: cell.frame.height/2, typeCorners: [.topRight, .topLeft, .bottomRight, .bottomLeft])
+        let choises = viewModel.choices[viewModel.questionPointer]
+        cell.text = choises[indexPath.row]
+        cell.roundCorners(cornerRadius: cell.frame.height/2,
+                          typeCorners: [.topRight, .topLeft, .bottomRight, .bottomLeft])
         cell.shadow()
         return cell
     }
@@ -85,11 +104,15 @@ extension GameQuestionViewController: UICollectionViewDelegateFlowLayout {
         return 10
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 1, left: 20, bottom: 1, right: 20)
     }
 }
@@ -100,10 +123,9 @@ extension GameQuestionViewController: GameQuestionViewModelDelegate {
 }
 
 extension GameQuestionViewController: GameViewQuestionDelegate {
-    func reloadData() {
+    func configView() {
         contentView.configview()
-        contentView.categoryLabel.text = ""
-        contentView.questionLabel.text = ""
-        contentView.imageCategory.image = UIImage(named: "ErrorImage")
+        contentView.questionLabel.text = viewModel.questions[viewModel.questionPointer]
+        contentView.imageCategory.image = UIImage(named: viewModel.theme.rawValue)
     }
 }

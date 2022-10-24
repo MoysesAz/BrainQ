@@ -17,8 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let windowsScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowsScene)
-        let mainView: ScoreboardViewController = ScoreboardViewController( viewModel: ScoreboardViewModel())
-        let navMainView = UINavigationController(rootViewController: mainView)
+        let view = ScoreboardView(frame: window.frame)
+        let viewModel = ScoreboardViewModel()
+        let controller: ScoreboardViewController = ScoreboardViewController(contentView: view, viewModel: viewModel)
+        let navMainView = UINavigationController(rootViewController: controller)
         window.rootViewController = navMainView
         window.makeKeyAndVisible()
         self.window = window    }

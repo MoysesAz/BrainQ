@@ -10,6 +10,7 @@ import UIKit
 protocol SelectorQuestionsDelegate: AnyObject {
     func start()
     func changeTheme(themeString: String)
+    func changeLevel(levelString: String)
 }
 
 class SelectorQuestionsView: UIView {
@@ -19,9 +20,17 @@ class SelectorQuestionsView: UIView {
     lazy var categoryLabel: UILabel = {
         let categoryQuestion = UILabel()
         categoryQuestion.translatesAutoresizingMaskIntoConstraints = false
-        categoryQuestion.font = .systemFont(ofSize: 21)
+        categoryQuestion.font = .systemFont(ofSize: 30, weight: .black)
         categoryQuestion.text = "Film"
         return categoryQuestion
+    }()
+
+    lazy var levelLabel: UILabel = {
+        let levelLabel = UILabel()
+        levelLabel.translatesAutoresizingMaskIntoConstraints = false
+        levelLabel.font = .systemFont(ofSize: 21, weight: .ultraLight)
+        levelLabel.text = "Easy"
+        return levelLabel
     }()
 
     lazy var imageCategory: UIImageView = {
@@ -60,10 +69,11 @@ class SelectorQuestionsView: UIView {
     }
 
     private func addSubViews() {
-        self.addSubview(categoryLabel)
-        self.addSubview(imageCategory)
-        self.addSubview(selectorPicker)
-        self.addSubview(startButton)
+        addSubview(categoryLabel)
+        addSubview(levelLabel)
+        addSubview(imageCategory)
+        addSubview(selectorPicker)
+        addSubview(startButton)
     }
 }
 
@@ -75,6 +85,7 @@ extension SelectorQuestionsView {
 
 extension SelectorQuestionsView {
     func setConstraints() {
+        levelLabelConstraints()
         categoryLabelConstraints()
         imageCategoryConstraints()
         selectorPickerConstraints()
@@ -83,14 +94,22 @@ extension SelectorQuestionsView {
 
     private func categoryLabelConstraints() {
         NSLayoutConstraint.activate([
-            categoryLabel.topAnchor.constraint(equalTo: topAnchor, constant: 100)
+            categoryLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: frame.height * 0.05),
+            categoryLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
+    }
+
+    private func levelLabelConstraints() {
+        NSLayoutConstraint.activate([
+            levelLabel.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor),
+            levelLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
 
     private func imageCategoryConstraints() {
         NSLayoutConstraint.activate([
-            imageCategory.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor),
-            imageCategory.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
+            imageCategory.topAnchor.constraint(equalTo: levelLabel.bottomAnchor),
+            imageCategory.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.45),
             imageCategory.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
             imageCategory.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
@@ -101,15 +120,15 @@ extension SelectorQuestionsView {
             selectorPicker.topAnchor.constraint(equalTo: imageCategory.bottomAnchor),
             selectorPicker.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.1),
             selectorPicker.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
-            selectorPicker.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20)
+            selectorPicker.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
 
     private func startButtonConstraints() {
         NSLayoutConstraint.activate([
-            startButton.topAnchor.constraint(equalTo: selectorPicker.bottomAnchor),
-            startButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.1),
-            startButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.4),
+            startButton.topAnchor.constraint(equalTo: selectorPicker.bottomAnchor, constant: frame.height * 0.05),
+            startButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.05),
+            startButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.45),
             startButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }

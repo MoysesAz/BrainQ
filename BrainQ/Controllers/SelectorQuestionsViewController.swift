@@ -27,6 +27,7 @@ class SelectorQuestionsViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Selector"
         contentView.selectorPicker.dataSource = self
         contentView.selectorPicker.delegate = self
         contentView.delegate = self
@@ -35,16 +36,21 @@ class SelectorQuestionsViewController: UIViewController {
 }
 
 extension SelectorQuestionsViewController: SelectorQuestionsDelegate {
+    func changeLevel(levelString: String) {
+        contentView.levelLabel.text = levelString.firstUppercased
+    }
+
     func changeTheme(themeString: String) {
         contentView.imageCategory.image = UIImage(named: themeString)
-        contentView.categoryLabel.text = themeString
+        contentView.categoryLabel.text = themeString.firstUppercased
     }
 
     func start() {
         let theme = viewModel.theme
         let level = viewModel.level
-        let gameQuestionViewModel = GameQuestionViewModel(theme: theme, level: level)
-        let controller = GameQuestionViewController(viewModel: gameQuestionViewModel)
+        let viewModel = GameQuestionViewModel(theme: theme, level: level)
+        let view = GameQuestionView(frame: self.view.frame)
+        let controller = GameQuestionViewController(contentView: view, viewModel: viewModel)
         self.navigationController?.pushViewController(controller, animated: true)
     }
 }
@@ -93,6 +99,7 @@ extension SelectorQuestionsViewController: UIPickerViewDataSource {
             viewModel.theme = theme
         case 1:
             let level = viewModel.levels[row]
+            changeLevel(levelString: level.rawValue)
             viewModel.level = level
         default:
             print("error")
