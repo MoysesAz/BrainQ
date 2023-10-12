@@ -20,6 +20,7 @@ class TrivialRequestApi {
                                       completion: completion)
 
     }
+
     private static func urlGenerator(theme: TrivialThemes, level: TrivialLevels) -> URL? {
         var url = "https://opentdb.com/api.php?amount=5"
         url += "&category=\(theme.returnNumber())"

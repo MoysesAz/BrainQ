@@ -8,4 +8,5 @@
 import Foundation
 
 enum HttpRequestMethodsError: Error {
+
 }

@@ -12,3 +12,5 @@ enum TrivialLevels: String, CaseIterable {
     case medium
     case hard
 }
+
+
